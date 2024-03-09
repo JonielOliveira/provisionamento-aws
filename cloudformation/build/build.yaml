@@ -13,11 +13,11 @@ Parameters:
   RepositoryECR:
     Type: String
     Description: Repositorio imagem ecr
-    Default: "243558588266.dkr.ecr.us-east-1.amazonaws.com/api"
+    Default: 243558588266.dkr.ecr.us-east-1.amazonaws.com/api
   DockerFilePath:
     Type: String
     Description: Caminho docker file
-    Default: "application/api/Dockerfile"
+    Default: application/api/Dockerfile
   
 
 Resources:
@@ -45,7 +45,7 @@ Resources:
             build:
               commands:
                 - echo Build iniciou em `date`
-                - docker build -t $REPOSITORY_URL_ECR:latest -f $DOCKER_FILE_PATH .
+                - docker build -t 243558588266.dkr.ecr.us-east-1.amazonaws.com/api:latest -f application/api/Dockerfile .
                 - echo Build finalizou em `date`
                 - echo Enviando imagem para o ECR...
                 - docker push $REPOSITORY_URL_ECR:latest
@@ -62,7 +62,7 @@ Resources:
           - Name: AWS_DEFAULT_REGION
             Value: !Ref AwsRegion
           - Name: REPOSITORY_URL_ECR
-            Value: !Ref RepositoryECR
+            Value: 243558588266.dkr.ecr.us-east-1.amazonaws.com/api 
           - Name: DOCKER_FILE_PATH
             Value: !Ref DockerFilePath
 
