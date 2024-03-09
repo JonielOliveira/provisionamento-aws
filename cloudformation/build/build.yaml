@@ -46,12 +46,14 @@ Resources:
               commands:
                 - echo Build iniciou em `date`
                 - docker build -t 243558588266.dkr.ecr.us-east-1.amazonaws.com/api:latest -f application/api/Dockerfile .
+                - docker build -t 243558588266.dkr.ecr.us-east-1.amazonaws.com/frontend:latest -f application/frontend/Dockerfile .
+                - docker build -t 243558588266.dkr.ecr.us-east-1.amazonaws.com/worker:latest -f application/worker/Dockerfile .
                 - echo Build finalizou em `date`
                 - echo Enviando imagem para o ECR...
-                - docker push $REPOSITORY_URL_ECR:latest
+                - docker push 243558588266.dkr.ecr.us-east-1.amazonaws.com/api:latest
+                - docker push 243558588266.dkr.ecr.us-east-1.amazonaws.com/frontend:latest
+                - docker push 243558588266.dkr.ecr.us-east-1.amazonaws.com/worker:latest
               
-              
-
       Artifacts:
         Type: NO_ARTIFACTS
       Environment:
